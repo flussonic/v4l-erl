@@ -1,0 +1,8 @@
+
+This code is licensed under BSD license.
+
+
+It includes:
+
+* erlang.mk by Loïc Hoguin <essen@ninenines.eu>
+* videodev2.h, v4l2-*.h licensed under BSD
