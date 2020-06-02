@@ -21,10 +21,17 @@ load_nif() ->
   end,
   LibPath = filename:join([
     PrivDir,
-    erlang:system_info(system_architecture),
-    "v4l.so"
+    "v4l"
   ]),
-  erlang:load_nif(LibPath, 0).
+  ArchLibPath = filename:join([
+    PrivDir,
+    erlang:system_info(system_architecture),
+    "v4l"
+  ]),
+  case erlang:load_nif(ArchLibPath, 0) of
+    ok -> ok;
+    {error, _} -> erlang:load_nif(LibPath, 0)
+  end.
 
 
 nif_loaded() ->

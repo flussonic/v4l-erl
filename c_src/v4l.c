@@ -121,6 +121,7 @@
  XX(bounds) \
  XX(defrect) \
  XX(pixelaspect) \
+ XX(sequence) \
  XX(arg0) \
  XX(arg1) \
  XX(arg2) \
@@ -932,6 +933,8 @@ v4l_nif_dequeue_buffer0(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
   ERL_NIF_TERM keys[] = {
     ATOM(index),
     ATOM(pts),
+    ATOM(sequence),
+    ATOM(field),
     ATOM(body)
   };
 
@@ -943,6 +946,8 @@ v4l_nif_dequeue_buffer0(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
   ERL_NIF_TERM values[sizeof(keys)/sizeof(*keys)] = {
     enif_make_uint(env, buf.index),
     enif_make_uint64(env, (uint64_t)buf.timestamp.tv_sec * 1000000 + (uint64_t)buf.timestamp.tv_usec),
+    enif_make_uint(env, buf.sequence),
+    enif_make_uint(env, buf.field),
     enif_make_binary(env, &body)
   };
 

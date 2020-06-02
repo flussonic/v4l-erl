@@ -1,5 +1,6 @@
 
 ifneq (,$(COMPILE))
+  C_SRC_OUTPUT = priv/v4l
 	include erlang.mk
 endif
 
